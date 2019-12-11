@@ -8,6 +8,7 @@ class WorldTime {
   String time; // the time in that location
   String flag; // url to an assets image
   String url; // location url
+  bool daytime;
 
   WorldTime({this.location, this.url, this.flag, this.time});
 
@@ -22,6 +23,7 @@ class WorldTime {
       now = now.add(Duration(hours: int.parse(offset)));
       // set the time property
       time = DateFormat.jm().format(now);
+      daytime = now.hour > 6 && now.hour < 20 ? true : false;
       print(time);
     } catch (e) {
       print('caught error: $e');
